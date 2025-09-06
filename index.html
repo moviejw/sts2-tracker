@@ -1,307 +1,482 @@
 <!doctype html>
 <html lang="ko">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Slay the Spire 2 — 자료집</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#f6f8fb;
-      --card:#ffffff;
-      --muted:#6b7280;
-      --accent:#5b8def;
-      --glass:rgba(255,255,255,0.6);
-      --radius:12px;
-      --shadow: 0 6px 22px rgba(15,23,42,0.06);
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:#0f172a}
-    .wrap{display:flex;min-height:100vh}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>슬더스2 트래커</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon"
+        href="https://static.wikia.nocookie.net/slay-the-spire/images/4/4a/Site-favicon.ico/revision/latest?cb=20210808183624">
+    <style>
+        :root {
+            --bg: #f6f8fb;
+            --card: #ffffff;
+            --muted: #6b7280;
+            --accent: #5b8def;
+            --radius: 12px;
+            --shadow: 0 6px 22px rgba(15, 23, 42, 0.06);
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+        }
 
-    /* Sidebar */
-    .sidebar{
-      width:260px;padding:28px;background:linear-gradient(180deg,#ffffff, #fbfdff);border-right:1px solid rgba(15,23,42,0.04);
-    }
-    .brand{font-weight:700;display:flex;gap:10px;align-items:center}
-    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#60d394);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
-    nav{margin-top:18px}
-    nav a{display:block;padding:10px 12px;border-radius:8px;color:var(--muted);text-decoration:none;margin-bottom:6px}
-    nav a.active, nav a:hover{background:var(--glass);color:var(--accent)}
+        * {
+            box-sizing: border-box
+        }
 
-    /* Main */
-    .main{flex:1;padding:28px}
-    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-    h1{margin:0;font-size:20px}
-    .subtitle{color:var(--muted);font-size:13px}
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: #0f172a
+        }
 
-    .card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:16px}
+        .wrap {
+            display: flex;
+            min-height: 100vh
+        }
 
-    /* Grid */
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    @media (max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:640px){.wrap{flex-direction:column}.sidebar{width:100%;order:2}.grid{grid-template-columns:1fr}.main{order:1}}
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            padding: 28px;
+            background: linear-gradient(180deg, #ffffff, #fbfdff);
+            border-right: 1px solid rgba(15, 23, 42, 0.04);
+            height: calc(100vh - 0px); /* 화면 전체 높이 */
+            position: sticky;
+            top: 0; /* 상단에서 고정 */
+            overflow-y: auto; /* 내용이 길어도 스크롤 가능 */
+        }
 
-    /* Controls */
-    .controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-    input[type=search], select{padding:10px;border:1px solid rgba(15,23,42,0.06);border-radius:10px;background:transparent;min-width:180px}
-    .btn{padding:10px 14px;border-radius:10px;border:0;background:var(--accent);color:#fff;font-weight:600;cursor:pointer}
+        .brand {
+            font-weight: 700;
+            display: flex;
+            gap: 10px;
+            align-items: center
+        }
 
-    /* Item card */
-    .item{display:flex;gap:12px;align-items:flex-start}
-    .thumb{width:64px;height:64px;border-radius:8px;background:linear-gradient(180deg,#eef3ff,#fff);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)}
-    .meta h3{margin:0;font-size:15px}
-    .meta p{margin:6px 0 0;color:var(--muted);font-size:13px}
-    .badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;border:1px solid rgba(15,23,42,0.06);margin-right:6px}
+        .logo {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent), #60d394);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            overflow: hidden
+        }
 
-    /* QnA */
-    .qa dt{font-weight:600;margin-top:12px}
-    .qa dd{margin:6px 0 12px;color:var(--muted)}
+        nav {
+            margin-top: 18px
+        }
 
-    /* small helpers */
-    .muted{color:var(--muted);font-size:13px}
-    .empty{color:var(--muted);padding:18px;text-align:center}
+        nav a {
+            display: block;
+            padding: 10px 12px;
+            border-radius: 8px;
+            color: var(--muted);
+            text-decoration: none;
+            margin-bottom: 6px;
+            transition: .15s
+        }
 
-    /* modal (simple) */
-    .modal{position:fixed;left:0;top:0;right:0;bottom:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.4)}
-    .modal.open{display:flex}
-    .modal .box{background:var(--card);padding:18px;border-radius:12px;width:560px;max-width:95%}
-    .form-row{display:flex;gap:10px;margin-bottom:10px}
-    .form-row input, .form-row select, .form-row textarea{flex:1;padding:10px;border-radius:8px;border:1px solid rgba(15,23,42,0.06)}
-  </style>
+        nav a.active,
+        nav a:hover {
+            background: rgba(91, 141, 239, 0.08);
+            color: var(--accent)
+        }
+
+        /* Main */
+        .main {
+            flex: 1;
+            padding: 28px
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 20px
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .lang-toggle {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: .15s
+        }
+
+        .lang-toggle:hover {
+            opacity: .9
+        }
+
+        .card {
+            background: var(--card);
+            padding: 18px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 16px
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px
+        }
+
+        @media (max-width:980px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        @media (max-width:640px) {
+            .wrap {
+                flex-direction: column
+            }
+
+            .sidebar {
+                width: 100%;
+                order: 2
+            }
+
+            .grid {
+                grid-template-columns: 1fr
+            }
+
+            .main {
+                order: 1
+            }
+        }
+
+        /* Item card */
+        .item {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start
+        }
+
+        .thumb {
+            width: 180px;
+            height: 180px;
+            border-radius: 12px;
+            background: rgba(242, 244, 248, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0
+        }
+
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 0px;
+            background: transparent
+        }
+
+        :root {
+            --card-color-red: #ffe5e5;    
+            --card-color-green: #e5ffe5; 
+            --card-color-blue: #e5e5ff;   
+            --card-color-purple: #f0e5ff; 
+            --card-color-gray: #f0f0f0;   
+        }
+
+
+        .meta h3 {
+            margin: 0;
+            font-size: 16px
+        }
+
+        .meta p {
+            margin: 8px 0 0;
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        /* QnA */
+        .qa dt {
+            font-weight: 600;
+            margin-top: 12px
+        }
+
+        .qa dd {
+            margin: 6px 0 12px;
+            color: var(--muted)
+        }
+
+        .muted {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .empty {
+            color: var(--muted);
+            padding: 18px;
+            text-align: center
+        }
+    </style>
 </head>
+
 <body>
-  <div class="wrap">
-    <aside class="sidebar">
-      <div class="brand">
-        <div class="logo">S2</div>
-        <div>
-          <div style="font-size:15px">Slay the Spire 2</div>
-          <div class="muted" style="font-size:12px">정보 정리 대시보드</div>
-        </div>
-      </div>
-      <nav>
-        <a href="#overview" class="active">개요</a>
-        <a href="#cards">카드</a>
-        <a href="#relics">유물</a>
-        <a href="#potions">포션</a>
-        <a href="#qna">Q & A</a>
-      </nav>
-      <div style="margin-top:18px">
-        <div class="muted" style="font-size:13px">빠른 액션</div>
-        <button class="btn" id="addBtn" style="margin-top:8px;width:100%">항목 추가</button>
-      </div>
-    </aside>
+    <div class="wrap">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="logo">
+                    <img src="assets/icons/icon.jpg" alt="S2 Logo" style="width:100%;height:100%;object-fit:cover;">
+                </div>
+                <div>
+                    <div style="font-size:15px">슬더스2</div>
+                    <div class="muted" style="font-size:12px">발매 전 정보</div>
+                </div>
+            </div>
+            <nav>
+                <a href="#overview" class="active">개요</a>
+                <a href="#cards">카드</a>
+                <a href="#relics">유물</a>
+                <a href="#potions">포션</a>
+                <a href="#qna">Q & A</a>
+            </nav>
+            <button class="lang-toggle" id="langBtn" style="margin:12px 0;">원문 보기</button>
+        </aside>
 
-    <main class="main">
-      <header>
-        <div>
-          <h1>Slay the Spire 2 — 자료집</h1>
-          <div class="subtitle">전반적인 개요, 카드, 유물, 포션, Q&amp;A를 깔끔하게 정리합니다.</div>
-        </div>
-        <div>
-          <small class="muted">로컬 저장소에 변경사항 저장됨</small>
-        </div>
-      </header>
+        <main class="main">
+            <header>
+                <div>
+                    <h1>슬더스2 트래커</h1>
+                    <div class="subtitle">대체 언제 출시함</div>
+                </div>
+            </header>
 
-      <!-- Overview -->
-      <section id="overview" class="card">
-        <h2>개요</h2>
-        <p class="muted">여기에 Slay the Spire 2의 간략한 설명과 주요 업데이트(트레일러, 네오우레터, 패치 노트 링크 등)를 적어둘 수 있습니다. 아래는 예시 항목입니다.</p>
-        <ul>
-          <li><strong>출시/트레일러 모음</strong> — 주요 트레일러, Neowletter 요약 링크</li>
-          <li><strong>주요 변경점</strong> — 새 시스템, 새로운 적/보스, 밸런스 변화</li>
-          <li><strong>데이터 출처</strong> — Reddit 스레드, 공식 블로그, 커뮤니티 스프레드시트</li>
-        </ul>
-      </section>
+            <!-- Overview -->
+            <section id="overview" class="card">
+                <h2>개요</h2>
+                <p class="muted" id="overviewText">
+                    슬더스2의 트레일러와 Neowsletter 등의 정보를 정리했습니다. 번역은 대부분 비공식 명칭이며, 모두 개발 중인 내용이므로 출시 시 변경될 수 있습니다. 정보에는 없지만 슬더스1에 있는 요소는 그대로 가져왔습니다.
+                </p>
+                <div style="margin-top:12px; display:flex; gap:12px; align-items:center;">
+                    <a href="https://store.steampowered.com/app/2868840/Slay_the_Spire_2/" target="_blank" style="text-decoration:none; color:var(--accent); display:flex; align-items:center; gap:6px;">
+                        <img src="assets/icons/steam.png" alt="Steam" style="width:20px; height:20px;"> 스팀 페이지
+                    </a>
+                    <a href="https://www.megacrit.com/news/" target="_blank" style="text-decoration:none; color:var(--accent); display:flex; align-items:center; gap:6px;">
+                        <img src="assets/icons/megacrit.jpg" alt="Neowsletter" style="width:20px; height:20px;"> Neowsletter
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=krDFltgjLtE" target="_blank" style="text-decoration:none; color:var(--accent); display:flex; align-items:center; gap:6px;">
+                        <img src="assets/icons/youtube.png" alt="Trailer" style="width:20px; height:20px;"> Reveal Trailer
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=ttVtllHkb4E" target="_blank" style="text-decoration:none; color:var(--accent); display:flex; align-items:center; gap:6px;">
+                        <img src="assets/icons/youtube.png" alt="Trailer" style="width:20px; height:20px;"> Gameplay Trailer
+                    </a>
+                </div>
+            </section>
 
-      <!-- Cards -->
-      <section id="cards" class="card">
-        <h2>카드</h2>
-                <div class="controls">
-          <p class="muted">카드 목록 — 아래에서 카드를 확인하세요.</p>
-        </div>
+            <!-- Cards -->
+            <section id="cards" class="card">
+                <h2>카드</h2>
+                <div id="cardsGrid" class="grid"></div>
+            </section>
 
-        <div id="cardsGrid" class="grid"></div>
-      </section>
+            <!-- Relics -->
+            <section id="relics" class="card">
+                <h2>유물</h2>
+                <div id="relicsGrid" class="grid"></div>
+            </section>
 
-      <!-- Relics -->
-      <section id="relics" class="card">
-        <h2>유물</h2>
-        <div id="relicsGrid" class="grid"></div>
-      </section>
+            <!-- Potions -->
+            <section id="potions" class="card">
+                <h2>포션</h2>
+                <div id="potionsGrid" class="grid"></div>
+            </section>
 
-      <!-- Potions -->
-      <section id="potions" class="card">
-        <h2>포션</h2>
-        <div id="potionsGrid" class="grid"></div>
-      </section>
-
-      <!-- QnA -->
-      <section id="qna" class="card">
-        <h2>Q &amp; A</h2>
-        <dl class="qa" id="qaList">
-        </dl>
-      </section>
-
-    </main>
-  </div>
-
-  <!-- Modal: Add item -->
-  <div class="modal" id="modal">
-    <div class="box">
-      <h3 id="modalTitle">항목 추가</h3>
-      <div class="form-row">
-        <select id="addCategory">
-          <option value="card">카드</option>
-          <option value="relic">유물</option>
-          <option value="potion">포션</option>
-          <option value="qa">QnA</option>
-        </select>
-        <input id="addName" placeholder="이름">
-      </div>
-      <div class="form-row">
-        <input id="addSub" placeholder="하위 분류 (예: 공격/일반 등)">
-        <input id="addTag" placeholder="태그 (콤마로 구분)">
-      </div>
-      <div class="form-row">
-        <textarea id="addDesc" rows="4" placeholder="설명"></textarea>
-      </div>
-      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
-        <button class="btn" id="saveItem">저장</button>
-        <button id="cancelItem" style="padding:10px 14px;border-radius:10px">취소</button>
-      </div>
+            <!-- QnA -->
+            <section id="qna" class="card">
+                <h2>Q &amp; A</h2>
+                <dl class="qa" id="qaList"></dl>
+            </section>
+        </main>
     </div>
-  </div>
+    <div id="imageModal"
+        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); align-items:center; justify-content:center; z-index:1000;">
+        <img id="modalImg" src="" alt=""
+            style="max-width:90%; max-height:90%; border-radius:0px; box-shadow:0 8px 30px rgba(0,0,0,0.4);">
+    </div>
 
-  <script>
-    // 샘플 데이터 (나중에 CSV/JSON으로 교체 가능)
-    const SAMPLE = {
-      cards: [
-        {id:1,name:'Striking Blow',type:'attack',rarity:'common',desc:'전방 적 하나에 8 피해를 줍니다.'},
-        {id:2,name:'Fortify',type:'power',rarity:'uncommon',desc:'매 턴 방어도를 3 얻습니다.'},
-        {id:3,name:'Quick Step',type:'skill',rarity:'common',desc:'이동 후 카드를 1장 뽑습니다.'}
-      ],
-      relics: [
-        {id:1,name:'Bronze Idol',desc:'전투 시작 시 약간의 금화 획득.'},
-        {id:2,name:'Eternal Feather',desc:'치명타 확률 소폭 증가.'}
-      ],
-      potions: [
-        {id:1,name:'Healing Draught',desc:'사용 시 12 체력을 회복합니다.'},
-        {id:2,name:'Burst Elixir',desc:'한 턴 동안 공격력이 증가합니다.'}
-      ],
-      qa: [
-        {q:'출시일은 언제인가요?', a:'공식 발표를 기다려 주세요. Neowletter와 트레일러를 모아서 링크로 정리할 예정입니다.'},
-        {q:'커뮤니티 가이드는 어디에서 찾나요?', a:'Reddit, Discord, Steam 커뮤니티 허브를 추천합니다.'}
-      ]
-    }
 
-    // 로컬스토리지 키
-    const STORAGE_KEY = 's2_data_v1'
+    <script>
+        let currentLang = 'kr';
+        let DB = { cards: [], relics: [], potions: [], qa: [] };
 
-    // 읽기: 로컬에 저장된 데이터가 있으면 사용, 아니면 SAMPLE 사용
-    function loadData(){
-      const raw = localStorage.getItem(STORAGE_KEY)
-      if(raw) try { return JSON.parse(raw) } catch(e) { return SAMPLE }
-      return SAMPLE
-    }
-    let DB = loadData()
+        async function loadJSON(path) {
+            const res = await fetch(path);
+            if (!res.ok) throw new Error(`Failed to load ${path}`);
+            return await res.json();
+        }
 
-    // 렌더 함수들
-    function renderCards(){
-      const grid = document.getElementById('cardsGrid')
-      grid.innerHTML = ''
-      const list = DB.cards
-      if(list.length===0){ grid.innerHTML='<div class="empty">카드가 없습니다.</div>'; return }
-      for(const c of list){
-        const el = document.createElement('div'); el.className='card item';
-        el.innerHTML = `<div class="thumb">${c.name.charAt(0).toUpperCase()}</div>
-          <div class="meta">
-            <h3>${c.name} <span class="muted" style="font-size:12px">· ${c.type} · ${c.rarity}</span></h3>
-            <p>${c.desc}</p>
-          </div>`
-        grid.appendChild(el)
-      }
-    }
+        async function loadAllData() {
+            try {
+                const [cards, relics, potions, qa] = await Promise.all([
+                    loadJSON("assets/db/cards.json"),
+                    loadJSON("assets/db/relics.json"),
+                    loadJSON("assets/db/potions.json"),
+                    loadJSON("assets/db/qnas.json")
+                ]);
+                DB.cards = cards;
+                DB.relics = relics;
+                DB.potions = potions;
+                DB.qa = qa;
+                renderAll();
+            } catch (e) {
+                console.error(e);
+            }
+        }
 
-    function renderRelics(){
-      const grid = document.getElementById('relicsGrid'); grid.innerHTML=''
-      if(DB.relics.length===0){ grid.innerHTML='<div class="empty">유물이 없습니다.</div>'; return }
-      for(const r of DB.relics){
-        const el = document.createElement('div'); el.className='card item'
-        el.innerHTML = `<div class="thumb">R</div><div class="meta"><h3>${r.name}</h3><p>${r.desc}</p></div>`
-        grid.appendChild(el)
-      }
-    }
-    function renderPotions(){
-      const grid = document.getElementById('potionsGrid'); grid.innerHTML=''
-      if(DB.potions.length===0){ grid.innerHTML='<div class="empty">포션이 없습니다.</div>'; return }
-      for(const p of DB.potions){
-        const el = document.createElement('div'); el.className='card item'
-        el.innerHTML = `<div class="thumb">P</div><div class="meta"><h3>${p.name}</h3><p>${p.desc}</p></div>`
-        grid.appendChild(el)
-      }
-    }
-    function renderQA(){
-      const dl = document.getElementById('qaList'); dl.innerHTML=''
-      if(DB.qa.length===0){ dl.innerHTML='<div class="empty">Q&amp;A 목록이 비어있습니다.</div>'; return }
-      for(const qa of DB.qa){
-        const dt = document.createElement('dt'); dt.textContent = qa.q
-        const dd = document.createElement('dd'); dd.textContent = qa.a
-        dl.appendChild(dt); dl.appendChild(dd)
-      }
-    }
+        function renderCards(list) {
+            const grid = document.getElementById('cardsGrid');
+            grid.innerHTML = '';
 
-    // 초기 렌더
-    function refreshAll(){ renderCards(); renderRelics(); renderPotions(); renderQA(); }
-    refreshAll()
+            if (list.length === 0) {
+                grid.innerHTML = '<div class="empty">카드가 없습니다.</div>';
+                return;
+            }
 
-    // 이벤트
-    // 검색 및 필터 기능은 제거되어 간단화되었습니다.
-    // (필요하면 나중에 다시 추가할 수 있습니다.)
+            for (const c of list) {
+                const el = document.createElement('div');
+                el.className = 'card item';
 
-    // 모달 열기/닫기
-    const modal = document.getElementById('modal')
-    document.getElementById('addBtn').addEventListener('click', ()=>{ modal.classList.add('open') })
-    document.getElementById('cancelItem').addEventListener('click', ()=>{ modal.classList.remove('open') })
+                let bgColor = '';
+                switch (c.color?.toLowerCase()) {
+                    case '아이언클래드': bgColor = 'var(--card-color-red)'; break;
+                    case '사일런트': bgColor = 'var(--card-color-green)'; break;
+                    case '디펙트': bgColor = 'var(--card-color-blue)'; break;
+                    case '와쳐': bgColor = 'var(--card-color-purple)'; break;
+                    default: bgColor = 'var(--card-color-gray)';
+                }
+                el.style.background = bgColor;
 
-    // 저장
-    function saveDB(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(DB)); }
+                const name = currentLang === 'kr' ? c.name_kr : c.name_en;
+                const desc = currentLang === 'kr' ? c.description_kr : c.description_en;
 
-    document.getElementById('saveItem').addEventListener('click', ()=>{
-      const cat = document.getElementById('addCategory').value
-      const name = document.getElementById('addName').value.trim()
-      const sub = document.getElementById('addSub').value.trim()
-      const tag = document.getElementById('addTag').value.trim()
-      const desc = document.getElementById('addDesc').value.trim()
-      if(!name){ alert('이름을 입력하세요.'); return }
-      if(cat==='card'){
-        DB.cards.push({id:Date.now(),name, type: sub||'skill', rarity: tag||'common', desc})
-      } else if(cat==='relic'){
-        DB.relics.push({id:Date.now(),name,desc})
-      } else if(cat==='potion'){
-        DB.potions.push({id:Date.now(),name,desc})
-      } else if(cat==='qa'){
-        DB.qa.push({q:name,a:desc})
-      }
-      saveDB(); refreshAll(); modal.classList.remove('open')
-      // 클리어 폼
-      document.getElementById('addName').value=''; document.getElementById('addSub').value=''; document.getElementById('addTag').value=''; document.getElementById('addDesc').value=''
-    })
+                el.innerHTML = `
+            <div class="thumb"><img src="assets/images/cards/${c.image}" alt="${name}"></div>
+            <div class="meta">
+                <h3>${name} <span class="muted" style="font-size:12px">· ${c.type} · ${c.rarity} · ${c.cost}코스트</span></h3>
+                <p>${desc}</p>
+            </div>`;
+                grid.appendChild(el);
+            }
+        }
 
-    // 사이드 네비 링크 스크롤 하이라이트
-    document.querySelectorAll('nav a').forEach(a=>{
-      a.addEventListener('click', (e)=>{
-        document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'))
-        a.classList.add('active')
-      })
-    })
+        function renderRelics(list) {
+            const grid = document.getElementById('relicsGrid'); grid.innerHTML = '';
+            if (list.length === 0) { grid.innerHTML = '<div class="empty">유물이 없습니다.</div>'; return }
+            for (const r of list) {
+                const el = document.createElement('div'); el.className = 'card item';
+                const name = currentLang === 'kr' ? r.name_kr || r.name : r.name_en || r.name;
+                const desc = currentLang === 'kr' ? r.desc_kr || r.desc : r.desc_en || r.desc;
+                el.innerHTML = `
+          <div class="thumb"><img src="assets/relics/${r.image}" alt="${name}"></div>
+          <div class="meta"><h3>${name}</h3><p>${desc}</p></div>`;
+                grid.appendChild(el);
+            }
+        }
 
-    // 유저가 페이지를 떠날 때 자동 저장 (이미 로컬에 반영되지만 안전장치)
-    window.addEventListener('beforeunload', saveDB)
-  </script>
+        function renderPotions(list) {
+            const grid = document.getElementById('potionsGrid'); grid.innerHTML = '';
+            if (list.length === 0) { grid.innerHTML = '<div class="empty">포션이 없습니다.</div>'; return }
+            for (const p of list) {
+                const el = document.createElement('div'); el.className = 'card item';
+                const name = currentLang === 'kr' ? p.name_kr || p.name : p.name_en || p.name;
+                const desc = currentLang === 'kr' ? p.desc_kr || p.desc : p.desc_en || p.desc;
+                el.innerHTML = `
+          <div class="thumb"><img src="assets/potions/${p.image}" alt="${name}"></div>
+          <div class="meta"><h3>${name}</h3><p>${desc}</p></div>`;
+                grid.appendChild(el);
+            }
+        }
+
+        function renderQA(list) {
+            const dl = document.getElementById('qaList'); dl.innerHTML = '';
+            if (list.length === 0) { dl.innerHTML = '<div class="empty">Q&amp;A 목록이 비어있습니다.</div>'; return }
+            for (const qa of list) {
+                const q = currentLang === 'kr' ? qa.q_kr || qa.q : qa.q_en || qa.q;
+                const a = currentLang === 'kr' ? qa.a_kr || qa.a : qa.a_en || qa.a;
+                const dt = document.createElement('dt'); dt.textContent = q;
+                const dd = document.createElement('dd'); dd.textContent = a;
+                dl.appendChild(dt); dl.appendChild(dd);
+            }
+        }
+
+        function renderAll() {
+            renderCards(DB.cards);
+            renderRelics(DB.relics);
+            renderPotions(DB.potions);
+            renderQA(DB.qa);
+        }
+
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+
+        function addImagePopup() {
+            document.querySelectorAll('.item .thumb img').forEach(img => {
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', () => {
+                    modal.style.display = 'flex';
+                    modalImg.src = img.src;
+                    modalImg.alt = img.alt;
+                });
+            });
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                modalImg.src = '';
+            }
+        });
+
+        function renderAll() {
+            renderCards(DB.cards);
+            renderRelics(DB.relics);
+            renderPotions(DB.potions);
+            renderQA(DB.qa);
+            addImagePopup();
+        }
+
+        document.getElementById('langBtn').addEventListener('click', () => {
+            currentLang = currentLang === 'kr' ? 'en' : 'kr';
+            document.getElementById('langBtn').textContent = currentLang === 'kr' ? '원문 보기' : '한국어';
+            renderAll();
+        });
+
+        loadAllData();
+
+        document.querySelectorAll('nav a').forEach(a => {
+            a.addEventListener('click', () => {
+                document.querySelectorAll('nav a').forEach(x => x.classList.remove('active'))
+                a.classList.add('active')
+            })
+        });
+    </script>
 </body>
+
 </html>

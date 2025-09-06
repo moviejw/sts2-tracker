@@ -1,0 +1,24 @@
+[
+    {
+        "q_kr": "광란",
+        "q_en": "Rampage",
+        "type": "Attack",
+        "color": "Ironclad",
+        "cost": 1,
+        "rarity": "Uncommon",
+        "a_kr": "피해를 9 줍니다. 이 카드를 사용할 때마다 이번 전투 동안 이 카드의 피해량이 ? 증가합니다.",
+        "a_en": "Deal 9 damage. Increase this card's damage by ? this combat.",
+        "image": "rampage.png"
+    },
+    {
+        "q_kr": "피에는 피",
+        "q_en": "Blood for Blood",
+        "type": "Attack",
+        "color": "Ironclad",
+        "cost": 4,
+        "rarity": "Uncommon",
+        "a_kr": "이번 전투에서 체력을 잃을 때마다 이 카드의 비용이 1 감소합니다. 피해를 18 줍니다.",
+        "a_en": "Costs 1 less energy for each time you lose HP in combat. Deal 18 damage.",
+        "image": "blood_for_blood.png"
+    }
+]

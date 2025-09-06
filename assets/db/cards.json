@@ -1,0 +1,90 @@
+[
+    {
+        "name_kr": "광란",
+        "name_en": "Rampage",
+        "type": "공격",
+        "color": "아이언클래드",
+        "cost": 1,
+        "rarity": "특별",
+        "description_kr": "피해를 9 줍니다. 이 카드를 사용할 때마다 이번 전투 동안 이 카드의 피해량이 5 증가합니다.",
+        "description_en": "Deal 9 damage. Increase this card's damage by 5 this combat.",
+        "image": "ironclad/rampage.jpg"
+    },
+    {
+        "name_kr": "피에는 피",
+        "name_en": "Blood for Blood",
+        "type": "공격",
+        "color": "아이언클래드",
+        "cost": 4,
+        "rarity": "특별",
+        "description_kr": "피해를 18 줍니다. 이번 전투에서 체력을 잃을 때마다 이 카드의 비용이 1 감소합니다.",
+        "description_en": "Deal 18 damage. Costs 1 less energy for each time you lose HP in combat.",
+        "image": "ironclad/blood_for_blood.jpeg"
+    },
+    {
+        "name_kr": "분노",
+        "name_en": "Anger",
+        "type": "공격",
+        "color": "아이언클래드",
+        "cost": 0,
+        "rarity": "일반",
+        "description_kr": "피해를 6 줍니다. 이 카드를 1장 복사해 버린 카드 더미에 섞어 넣습니다.",
+        "description_en": "Deal 6 damage. Add a copy of this card into your Discard Pile.",
+        "image": "ironclad/anger.jpeg"
+    },
+    {
+        "name_kr": "돌파",
+        "name_en": "Breakthrough",
+        "type": "공격",
+        "color": "아이언클래드",
+        "cost": 1,
+        "rarity": "일반",
+        "description_kr": "체력을 1 잃습니다. 적 전체에게 피해를 10 줍니다.",
+        "description_en": "Lose 1 HP. Deal 10 damage to all enemies.",
+        "image": "ironclad/breakthrough.jpeg"
+    },
+    {
+        "name_kr": "천둥",
+        "name_en": "Thunderclap",
+        "type": "공격",
+        "color": "아이언클래드",
+        "cost": 1,
+        "rarity": "일반",
+        "description_kr": "적 전체에게 피해를 4 주고 취약을 1 부여합니다.",
+        "description_en": "Deal 4 damage and apply 1 Vulnerable to all enemies.",
+        "image": "ironclad/thunderclap.jpeg"
+    },
+    {
+        "name_kr": "무자비함",
+        "name_en": "Unrelenting",
+        "type": "공격",
+        "color": "아이언클래드",
+        "cost": 2,
+        "rarity": "특별",
+        "description_kr": "피해를 12 줍니다. 다음으로 사용하는 공격 카드의 비용이 0이 됩니다.",
+        "description_en": "Deal 12 damage. Your next Attack you play costs 0.",
+        "image": "ironclad/unrelenting.jpeg"
+    },
+    {
+        "name_kr": "피 벽",
+        "name_en": "Blood Wall",
+        "type": "스킬",
+        "color": "아이언클래드",
+        "cost": 2,
+        "rarity": "일반",
+        "description_kr": "체력을 2 잃습니다. 방어도를 15 얻습니다.",
+        "description_en": "Lose 2 HP. Gain 15 Block.",
+        "image": "ironclad/blood_wall.jpeg"
+    },
+    {
+        "name_kr": "떨림",
+        "name_en": "Tremble",
+        "type": "스킬",
+        "color": "아이언클래드",
+        "cost": 0,
+        "rarity": "일반",
+        "description_kr": "취약을 2 부여합니다. 소멸.",
+        "description_en": "Apply 2 Vulnerable. Exhaust.",
+        "image": "ironclad/tremble.jpeg"
+    }
+]
