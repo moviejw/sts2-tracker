@@ -88,6 +88,28 @@
         "image": "ironclad/tremble.jpeg"
     },
     {
+        "name_kr": "도발",
+        "name_en": "Taunt",
+        "type": "스킬",
+        "color": "아이언클래드",
+        "cost": 1,
+        "rarity": "특별",
+        "description_kr": "방어도를 7 얻습니다. 적 전체에게 취약을 1 부여합니다.",
+        "description_en": "Gain 7 Block. Apply 1 Vulnerable to all enemies.",
+        "image": "ironclad/taunt.jpeg"
+    },
+    {
+        "name_kr": "붙잡기",
+        "name_en": "Grapple",
+        "type": "스킬",
+        "color": "아이언클래드",
+        "cost": 1,
+        "rarity": "특별",
+        "description_kr": "취약을 1 부여합니다. 적이 가진 취약마다 이번 턴에 힘을 1 잃습니다.",
+        "description_en": "Apply 1 Vulnerable. Enemy loses 1 Strength this turn for each Vulnerable it has.",
+        "image": "ironclad/grapple.jpeg"
+    },
+    {
         "name_kr": "돌 갑옷",
         "name_en": "Stone Armor",
         "type": "파워",
@@ -99,6 +121,39 @@
         "image": "ironclad/stone_armor.jpeg"
     },
     {
+        "name_kr": "공격성",
+        "name_en": "Aggression",
+        "type": "파워",
+        "color": "아이언클래드",
+        "cost": 1,
+        "rarity": "희귀",
+        "description_kr": "턴 시작 시, 버린 카드 더미에서 무작위 공격 카드를 가져오고 강화합니다.",
+        "description_en": "At the start of your turn, put a random Attack from your Discard Pile into your Hand and Upgrade it.",
+        "image": "ironclad/aggression.jpeg"
+    },
+    {
+        "name_kr": "헬레이져",
+        "name_en": "Hellraiser",
+        "type": "파워",
+        "color": "아이언클래드",
+        "cost": 3,
+        "rarity": "희귀",
+        "description_kr": "이름에 '타격'이 포함된 카드를 뽑을 때마다 무작위 적에게 사용합니다.",
+        "description_en": "Whenever you draw a card containing 'Strike', it is played against a random enemy.",
+        "image": "ironclad/hellraiser.jpeg"
+    },
+    {
+        "name_kr": "잔혹함",
+        "name_en": "Cruelty",
+        "type": "파워",
+        "color": "아이언클래드",
+        "cost": 1,
+        "rarity": "희귀",
+        "description_kr": "취약에 걸린 적이 피해를 25% 더 받습니다.",
+        "description_en": "Vulnerable enemies take an additional 25% damage.",
+        "image": "ironclad/cruelty.jpg"
+    },
+    {
         "name_kr": "강타",
         "name_en": "Bash",
         "type": "공격",
@@ -107,7 +162,7 @@
         "rarity": "시작",
         "description_kr": "피해를 8 줍니다. 취약을 2 부여합니다.",
         "description_en": "Deal 8 damage. Apply 2 Vulnerable.",
-        "image": "ironclad/bash.jpeg"
+        "image": "ironclad/bash.png"
     },
     {
         "name_kr": "돌지이이인",
@@ -119,6 +174,50 @@
         "description_kr": "적 전체에게 현재 방어도만큼 피해를 줍니다.",
         "description_en": "Deal damage equal to current Block to all enemies.",
         "image": "ironclad/chaaarge.jpeg"
+    },
+    {
+        "name_kr": "완벽한 타격",
+        "name_en": "Perfected Strike",
+        "type": "공격",
+        "color": "아이언클래드",
+        "cost": 2,
+        "rarity": "일반",
+        "description_kr": "피해를 6 줍니다. 보유 중인 카드 중 이름에 '타격'이 포함된 카드 하나당 피해량이 2 증가합니다.",
+        "description_en": "Deal 6 damage. Deals an additional 2 damage for ALL of your cards containing 'Strike'.",
+        "image": "ironclad/perfected_strike.jpeg"
+    },
+    {
+        "name_kr": "흘려보내기",
+        "name_en": "Shrug it Off",
+        "type": "스킬",
+        "color": "아이언클래드",
+        "cost": 1,
+        "rarity": "일반",
+        "description_kr": "방어도를 8 얻습니다. 카드를 1장 뽑습니다.",
+        "description_en": "Gain 8 Block. Draw 1 card.",
+        "image": "ironclad/shrug_it_off.jpeg"
+    },
+    {
+        "name_kr": "난도질",
+        "name_en": "Mangle",
+        "type": "공격",
+        "color": "아이언클래드",
+        "cost": 3,
+        "rarity": "희귀",
+        "description_kr": "피해를 15 줍니다. 적이 이번 턴에 힘을 10 잃습니다.",
+        "description_en": "Deal 15 damage. Enemy loses 10 Strength this turn.",
+        "image": "ironclad/mangle.jpeg"
+    },
+    {
+        "name_kr": "재",
+        "name_en": "Cinder",
+        "type": "공격",
+        "color": "아이언클래드",
+        "cost": 2,
+        "rarity": "일반",
+        "description_kr": "피해를 15 줍니다. 뽑을 카드 더미 맨 위 2장을 소멸시킵니다.",
+        "description_en": "Deal 15 damage. Exhaust the top 2 cards in your Draw Pile.",
+        "image": "ironclad/cinder.jpeg"
     },
     {
         "name_kr": "해체",
@@ -141,5 +240,82 @@
         "description_kr": "피해를 4 줍니다. 적이 가진 취약 1 당 피해를 2 더 줍니다.",
         "description_en": "Deal 4 damage. Deal 2 additional damage for each Vulnerable on the enemy.",
         "image": "ironclad/bully.jpeg"
+    },
+    {
+        "name_kr": "계약 종료",
+        "name_en": "Pact's End",
+        "type": "공격",
+        "color": "아이언클래드",
+        "cost": 1,
+        "rarity": "일반",
+        "description_kr": "피해를",
+        "description_en": "Deal",
+        "image": "ironclad/pacts_end.jpeg"
+    },
+    {
+        "name_kr": "잊혀진 의식",
+        "name_en": "Forgotten Ritual",
+        "type": "스킬",
+        "color": "아이언클래드",
+        "cost": 0,
+        "rarity": "특별",
+        "description_kr": "-",
+        "description_en": "-",
+        "image": "ironclad/forgotten_ritual.jpeg"
+    },
+    {
+        "name_kr": "설치 타격",
+        "name_en": "Setup Strike",
+        "type": "공격",
+        "color": "아이언클래드",
+        "cost": 1,
+        "rarity": "일반",
+        "description_kr": "-",
+        "description_en": "-",
+        "image": "ironclad/setup_strike.jpeg"
+    },
+    {
+        "name_kr": "타격",
+        "name_en": "Strike",
+        "type": "공격",
+        "color": "아이언클래드",
+        "cost": 1,
+        "rarity": "시작",
+        "description_kr": "피해를 6 줍니다.",
+        "description_en": "Deal 6 damage.",
+        "image": "ironclad/strike.jpeg"
+    },
+    {
+        "name_kr": "수비",
+        "name_en": "Defend",
+        "type": "스킬",
+        "color": "아이언클래드",
+        "cost": 1,
+        "rarity": "시작",
+        "description_kr": "방어도를 5 얻습니다.",
+        "description_en": "Gain 5 Block.",
+        "image": "ironclad/defend.png"
+    },
+    {
+        "name_kr": "진정한 끈기",
+        "name_en": "True Grit",
+        "type": "스킬",
+        "color": "아이언클래드",
+        "cost": 1,
+        "rarity": "일반",
+        "description_kr": "방어도를 7 얻습니다. 무작위 카드를 1장 소멸시킵니다.",
+        "description_en": "Gain 7 Block. Exhaust 1 card at random.",
+        "image": "ironclad/true_grit.png"
+    },
+    {
+        "name_kr": "철의 파동",
+        "name_en": "Iron Wave",
+        "type": "공격",
+        "color": "아이언클래드",
+        "cost": 1,
+        "rarity": "일반",
+        "description_kr": "방어도를 5 얻습니다. 피해를 5 줍니다.",
+        "description_en": "Gain 5 Block. Deal 5 damage.",
+        "image": "ironclad/iron_wave.png"
     }
 ]
