@@ -86,5 +86,60 @@
         "description_kr": "취약을 2 부여합니다. 소멸.",
         "description_en": "Apply 2 Vulnerable. Exhaust.",
         "image": "ironclad/tremble.jpeg"
+    },
+    {
+        "name_kr": "돌 갑옷",
+        "name_en": "Stone Armor",
+        "type": "파워",
+        "color": "아이언클래드",
+        "cost": 1,
+        "rarity": "특별",
+        "description_kr": "판금 갑옷을 5 얻습니다. 민첩을 1 잃습니다.",
+        "description_en": "Gain 5 Plating. Lose 1 Dexterity.",
+        "image": "ironclad/stone_armor.jpeg"
+    },
+    {
+        "name_kr": "강타",
+        "name_en": "Bash",
+        "type": "공격",
+        "color": "아이언클래드",
+        "cost": 2,
+        "rarity": "시작",
+        "description_kr": "피해를 8 줍니다. 취약을 2 부여합니다.",
+        "description_en": "Deal 8 damage. Apply 2 Vulnerable.",
+        "image": "ironclad/bash.jpeg"
+    },
+    {
+        "name_kr": "돌지이이인",
+        "name_en": "Chaaarge",
+        "type": "공격",
+        "color": "아이언클래드",
+        "cost": 0,
+        "rarity": "희귀",
+        "description_kr": "적 전체에게 현재 방어도만큼 피해를 줍니다.",
+        "description_en": "Deal damage equal to current Block to all enemies.",
+        "image": "ironclad/chaaarge.jpeg"
+    },
+    {
+        "name_kr": "해체",
+        "name_en": "Dismantle",
+        "type": "공격",
+        "color": "아이언클래드",
+        "cost": 1,
+        "rarity": "특별",
+        "description_kr": "-",
+        "description_en": "-",
+        "image": "ironclad/dismantle.jpeg"
+    },
+    {
+        "name_kr": "괴롭히기",
+        "name_en": "Bully",
+        "type": "공격",
+        "color": "아이언클래드",
+        "cost": 0,
+        "rarity": "특별",
+        "description_kr": "피해를 4 줍니다. 적이 가진 취약 1 당 피해를 2 더 줍니다.",
+        "description_en": "Deal 4 damage. Deal 2 additional damage for each Vulnerable on the enemy.",
+        "image": "ironclad/bully.jpeg"
     }
 ]

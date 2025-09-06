@@ -8,8 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon"
-        href="https://static.wikia.nocookie.net/slay-the-spire/images/4/4a/Site-favicon.ico/revision/latest?cb=20210808183624">
+    <link rel="icon" href="assets/icons/favicon.png">
     <style>
         :root {
             --bg: #f6f8fb;
@@ -42,10 +41,13 @@
             padding: 28px;
             background: linear-gradient(180deg, #ffffff, #fbfdff);
             border-right: 1px solid rgba(15, 23, 42, 0.04);
-            height: calc(100vh - 0px); /* 화면 전체 높이 */
+            height: calc(100vh - 0px);
+            /* 화면 전체 높이 */
             position: sticky;
-            top: 0; /* 상단에서 고정 */
-            overflow-y: auto; /* 내용이 길어도 스크롤 가능 */
+            top: 0;
+            /* 상단에서 고정 */
+            overflow-y: auto;
+            /* 내용이 길어도 스크롤 가능 */
         }
 
         .brand {
@@ -167,6 +169,36 @@
             }
         }
 
+        /* 캐릭터 이미지 그리드 */
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* 기본 2열 */
+            gap: 16px;
+        }
+
+        .char-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            object-fit: cover;
+            cursor: pointer;
+            box-shadow: 0 6px 22px rgba(15, 23, 42, 0.06);
+            transition: transform 0.2s;
+        }
+
+        .char-item img:hover {
+            transform: scale(1.03);
+        }
+
+        /* 반응형 */
+        @media (max-width: 980px) {
+            .characters-grid {
+                grid-template-columns: 1fr;
+                /* 모바일 1열 */
+            }
+        }
+
         /* Item card */
         .item {
             display: flex;
@@ -195,11 +227,11 @@
         }
 
         :root {
-            --card-color-red: #ffe5e5;    
-            --card-color-green: #e5ffe5; 
-            --card-color-blue: #e5e5ff;   
-            --card-color-purple: #f0e5ff; 
-            --card-color-gray: #f0f0f0;   
+            --card-color-red: #ffe5e5;
+            --card-color-green: #e5ffe5;
+            --card-color-blue: #e5e5ff;
+            --card-color-purple: #f0e5ff;
+            --card-color-gray: #f0f0f0;
         }
 
 
@@ -252,9 +284,11 @@
             </div>
             <nav>
                 <a href="#overview" class="active">개요</a>
+                <a href="#characters">캐릭터</a>
                 <a href="#cards">카드</a>
                 <a href="#relics">유물</a>
                 <a href="#potions">포션</a>
+                <a href="#release">출시일</a>
                 <a href="#qna">Q & A</a>
             </nav>
             <button class="lang-toggle" id="langBtn" style="margin:12px 0;">원문 보기</button>
@@ -272,21 +306,47 @@
             <section id="overview" class="card">
                 <h2>개요</h2>
                 <p class="muted" id="overviewText">
-                    슬더스2의 트레일러와 Neowsletter 등의 정보를 정리했습니다. 번역은 대부분 비공식 명칭이며, 모두 개발 중인 내용이므로 출시 시 변경될 수 있습니다. 정보에는 없지만 슬더스1에 있는 요소는 그대로 가져왔습니다.
+                    슬더스2의 트레일러와 Neowsletter 등의 정보를 정리했습니다. 번역은 대부분 비공식 명칭이며, 모두 개발 중인 내용이므로 출시 시 변경될 수 있습니다. 정보에는 없지만
+                    슬더스1에 있는 요소는 그대로 가져왔습니다.
                 </p>
                 <div style="margin-top:12px; display:flex; gap:12px; align-items:center;">
-                    <a href="https://store.steampowered.com/app/2868840/Slay_the_Spire_2/" target="_blank" style="text-decoration:none; color:var(--accent); display:flex; align-items:center; gap:6px;">
+                    <a href="https://store.steampowered.com/app/2868840/Slay_the_Spire_2/" target="_blank"
+                        style="text-decoration:none; color:var(--accent); display:flex; align-items:center; gap:6px;">
                         <img src="assets/icons/steam.png" alt="Steam" style="width:20px; height:20px;"> 스팀 페이지
                     </a>
-                    <a href="https://www.megacrit.com/news/" target="_blank" style="text-decoration:none; color:var(--accent); display:flex; align-items:center; gap:6px;">
-                        <img src="assets/icons/megacrit.jpg" alt="Neowsletter" style="width:20px; height:20px;"> Neowsletter
+                    <a href="https://www.megacrit.com/news/" target="_blank"
+                        style="text-decoration:none; color:var(--accent); display:flex; align-items:center; gap:6px;">
+                        <img src="assets/icons/megacrit.jpg" alt="Neowsletter" style="width:20px; height:20px;">
+                        Neowsletter
                     </a>
-                    <a href="https://www.youtube.com/watch?v=krDFltgjLtE" target="_blank" style="text-decoration:none; color:var(--accent); display:flex; align-items:center; gap:6px;">
-                        <img src="assets/icons/youtube.png" alt="Trailer" style="width:20px; height:20px;"> Reveal Trailer
+                    <a href="https://www.youtube.com/watch?v=krDFltgjLtE" target="_blank"
+                        style="text-decoration:none; color:var(--accent); display:flex; align-items:center; gap:6px;">
+                        <img src="assets/icons/youtube.png" alt="Trailer" style="width:20px; height:20px;"> Reveal
+                        Trailer
                     </a>
-                    <a href="https://www.youtube.com/watch?v=ttVtllHkb4E" target="_blank" style="text-decoration:none; color:var(--accent); display:flex; align-items:center; gap:6px;">
-                        <img src="assets/icons/youtube.png" alt="Trailer" style="width:20px; height:20px;"> Gameplay Trailer
+                    <a href="https://www.youtube.com/watch?v=ttVtllHkb4E" target="_blank"
+                        style="text-decoration:none; color:var(--accent); display:flex; align-items:center; gap:6px;">
+                        <img src="assets/icons/youtube.png" alt="Trailer" style="width:20px; height:20px;"> Gameplay
+                        Trailer
                     </a>
+                </div>
+            </section>
+
+            <section id="characters" class="card">
+                <h2>캐릭터</h2>
+                <div id="charactersGrid" class="grid characters-grid">
+                    <div class="char-item">
+                        <img src="assets/images/characters/ironclad.jpeg" alt="아클">
+                    </div>
+                    <div class="char-item">
+                        <img src="assets/images/characters/silent.jpeg" alt="사일">
+                    </div>
+                    <div class="char-item">
+                        <img src="assets/images/characters/necrobinder.jpeg" alt="샌즈">
+                    </div>
+                    <div class="char-item">
+                        <img src="assets/images/characters/defecter.jpeg" alt="디펙터">
+                    </div>
                 </div>
             </section>
 
@@ -306,6 +366,17 @@
             <section id="potions" class="card">
                 <h2>포션</h2>
                 <div id="potionsGrid" class="grid"></div>
+            </section>
+
+            <section id="release" class="card">
+                <h2>출시일</h2>
+                <div id="highlightRelease" style="margin-top:12px;"></div>
+                <ul id="releaseList" style="margin-bottom:16px;"></ul>
+                <div><a href="https://www.reddit.com/r/slaythespire/comments/1moeo4q/slay_the_spire_2_11_possible_release_dates/"
+                        target="_blank"
+                        style="text-decoration:none;color:var(--accent); display:flex; align-items:center; gap:6px;">
+                        <img src="assets/icons/reddit.png" alt="Reddit" style="width:20px; height:20px;">출시일
+                        정보</a></div>
             </section>
 
             <!-- QnA -->
@@ -414,6 +485,61 @@
             }
         }
 
+        function renderReleaseDates() {
+            const releaseDates = [
+                '2025-08-28',
+                '2025-09-04',
+                '2025-09-18',
+                '2025-09-25',
+                '2025-10-02',
+                '2025-10-09',
+                '2025-10-16',
+                '2025-10-23',
+                '2025-11-06',
+                '2025-11-13',
+                '2025-11-20',
+                '2025-11-27'
+            ].map(d => new Date(d));
+
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            const futureDates = releaseDates.filter(d => d >= today);
+            const nearest = futureDates.length ? futureDates[0] : null;
+            const farthest = futureDates.length ? futureDates[futureDates.length - 1] : null;
+
+            const highlightDiv = document.getElementById('highlightRelease');
+            highlightDiv.innerHTML = '';
+
+            if (nearest) {
+                const diffDays = Math.ceil((nearest - today) / (1000 * 60 * 60 * 24));
+                const div = document.createElement('div');
+                div.style.fontSize = '18px';
+                div.style.fontWeight = '600';
+                div.style.marginBottom = '6px';
+                div.textContent = `가장 가까운 출시일까지 D-${diffDays}`;
+                highlightDiv.appendChild(div);
+            }
+
+            if (farthest) {
+                const diffDays = Math.ceil((farthest - today) / (1000 * 60 * 60 * 24));
+                const div = document.createElement('div');
+                div.style.fontSize = '18px';
+                div.style.fontWeight = '600';
+                div.textContent = `가장 먼 출시일까지 D-${diffDays}`;
+                highlightDiv.appendChild(div);
+            }
+
+            const list = document.getElementById('releaseList');
+            list.innerHTML = '';
+            futureDates.forEach(d => {
+                const li = document.createElement('li');
+                li.textContent = d.toLocaleDateString('ko-KR', { month: 'long', day: 'numeric' });
+                list.appendChild(li);
+            });
+        }
+
+
         function renderQA(list) {
             const dl = document.getElementById('qaList'); dl.innerHTML = '';
             if (list.length === 0) { dl.innerHTML = '<div class="empty">Q&amp;A 목록이 비어있습니다.</div>'; return }
@@ -424,13 +550,6 @@
                 const dd = document.createElement('dd'); dd.textContent = a;
                 dl.appendChild(dt); dl.appendChild(dd);
             }
-        }
-
-        function renderAll() {
-            renderCards(DB.cards);
-            renderRelics(DB.relics);
-            renderPotions(DB.potions);
-            renderQA(DB.qa);
         }
 
         const modal = document.getElementById('imageModal');
@@ -456,9 +575,10 @@
 
         function renderAll() {
             renderCards(DB.cards);
-            renderRelics(DB.relics);
-            renderPotions(DB.potions);
-            renderQA(DB.qa);
+            //renderRelics(DB.relics);
+            //renderPotions(DB.potions);
+            renderReleaseDates();
+            //renderQA(DB.qa);
             addImagePopup();
         }
 
