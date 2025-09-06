@@ -1,39 +1,307 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>임시 페이지</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Slay the Spire 2 — 자료집</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #74ebd5, #9face6);
-      color: #333;
-      text-align: center;
+    :root{
+      --bg:#f6f8fb;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#5b8def;
+      --glass:rgba(255,255,255,0.6);
+      --radius:12px;
+      --shadow: 0 6px 22px rgba(15,23,42,0.06);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
     }
-    .container {
-      background: white;
-      padding: 2rem 3rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:#0f172a}
+    .wrap{display:flex;min-height:100vh}
+
+    /* Sidebar */
+    .sidebar{
+      width:260px;padding:28px;background:linear-gradient(180deg,#ffffff, #fbfdff);border-right:1px solid rgba(15,23,42,0.04);
     }
-    h1 {
-      margin-bottom: 1rem;
-    }
-    p {
-      color: #555;
-    }
+    .brand{font-weight:700;display:flex;gap:10px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#60d394);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    nav{margin-top:18px}
+    nav a{display:block;padding:10px 12px;border-radius:8px;color:var(--muted);text-decoration:none;margin-bottom:6px}
+    nav a.active, nav a:hover{background:var(--glass);color:var(--accent)}
+
+    /* Main */
+    .main{flex:1;padding:28px}
+    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+    h1{margin:0;font-size:20px}
+    .subtitle{color:var(--muted);font-size:13px}
+
+    .card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:16px}
+
+    /* Grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    @media (max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.wrap{flex-direction:column}.sidebar{width:100%;order:2}.grid{grid-template-columns:1fr}.main{order:1}}
+
+    /* Controls */
+    .controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+    input[type=search], select{padding:10px;border:1px solid rgba(15,23,42,0.06);border-radius:10px;background:transparent;min-width:180px}
+    .btn{padding:10px 14px;border-radius:10px;border:0;background:var(--accent);color:#fff;font-weight:600;cursor:pointer}
+
+    /* Item card */
+    .item{display:flex;gap:12px;align-items:flex-start}
+    .thumb{width:64px;height:64px;border-radius:8px;background:linear-gradient(180deg,#eef3ff,#fff);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)}
+    .meta h3{margin:0;font-size:15px}
+    .meta p{margin:6px 0 0;color:var(--muted);font-size:13px}
+    .badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;border:1px solid rgba(15,23,42,0.06);margin-right:6px}
+
+    /* QnA */
+    .qa dt{font-weight:600;margin-top:12px}
+    .qa dd{margin:6px 0 12px;color:var(--muted)}
+
+    /* small helpers */
+    .muted{color:var(--muted);font-size:13px}
+    .empty{color:var(--muted);padding:18px;text-align:center}
+
+    /* modal (simple) */
+    .modal{position:fixed;left:0;top:0;right:0;bottom:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.4)}
+    .modal.open{display:flex}
+    .modal .box{background:var(--card);padding:18px;border-radius:12px;width:560px;max-width:95%}
+    .form-row{display:flex;gap:10px;margin-bottom:10px}
+    .form-row input, .form-row select, .form-row textarea{flex:1;padding:10px;border-radius:8px;border:1px solid rgba(15,23,42,0.06)}
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🚧 준비 중입니다 🚧</h1>
-    <p>곧 멋진 웹사이트로 찾아뵐게요!</p>
+  <div class="wrap">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">S2</div>
+        <div>
+          <div style="font-size:15px">Slay the Spire 2</div>
+          <div class="muted" style="font-size:12px">정보 정리 대시보드</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#overview" class="active">개요</a>
+        <a href="#cards">카드</a>
+        <a href="#relics">유물</a>
+        <a href="#potions">포션</a>
+        <a href="#qna">Q & A</a>
+      </nav>
+      <div style="margin-top:18px">
+        <div class="muted" style="font-size:13px">빠른 액션</div>
+        <button class="btn" id="addBtn" style="margin-top:8px;width:100%">항목 추가</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header>
+        <div>
+          <h1>Slay the Spire 2 — 자료집</h1>
+          <div class="subtitle">전반적인 개요, 카드, 유물, 포션, Q&amp;A를 깔끔하게 정리합니다.</div>
+        </div>
+        <div>
+          <small class="muted">로컬 저장소에 변경사항 저장됨</small>
+        </div>
+      </header>
+
+      <!-- Overview -->
+      <section id="overview" class="card">
+        <h2>개요</h2>
+        <p class="muted">여기에 Slay the Spire 2의 간략한 설명과 주요 업데이트(트레일러, 네오우레터, 패치 노트 링크 등)를 적어둘 수 있습니다. 아래는 예시 항목입니다.</p>
+        <ul>
+          <li><strong>출시/트레일러 모음</strong> — 주요 트레일러, Neowletter 요약 링크</li>
+          <li><strong>주요 변경점</strong> — 새 시스템, 새로운 적/보스, 밸런스 변화</li>
+          <li><strong>데이터 출처</strong> — Reddit 스레드, 공식 블로그, 커뮤니티 스프레드시트</li>
+        </ul>
+      </section>
+
+      <!-- Cards -->
+      <section id="cards" class="card">
+        <h2>카드</h2>
+                <div class="controls">
+          <p class="muted">카드 목록 — 아래에서 카드를 확인하세요.</p>
+        </div>
+
+        <div id="cardsGrid" class="grid"></div>
+      </section>
+
+      <!-- Relics -->
+      <section id="relics" class="card">
+        <h2>유물</h2>
+        <div id="relicsGrid" class="grid"></div>
+      </section>
+
+      <!-- Potions -->
+      <section id="potions" class="card">
+        <h2>포션</h2>
+        <div id="potionsGrid" class="grid"></div>
+      </section>
+
+      <!-- QnA -->
+      <section id="qna" class="card">
+        <h2>Q &amp; A</h2>
+        <dl class="qa" id="qaList">
+        </dl>
+      </section>
+
+    </main>
   </div>
+
+  <!-- Modal: Add item -->
+  <div class="modal" id="modal">
+    <div class="box">
+      <h3 id="modalTitle">항목 추가</h3>
+      <div class="form-row">
+        <select id="addCategory">
+          <option value="card">카드</option>
+          <option value="relic">유물</option>
+          <option value="potion">포션</option>
+          <option value="qa">QnA</option>
+        </select>
+        <input id="addName" placeholder="이름">
+      </div>
+      <div class="form-row">
+        <input id="addSub" placeholder="하위 분류 (예: 공격/일반 등)">
+        <input id="addTag" placeholder="태그 (콤마로 구분)">
+      </div>
+      <div class="form-row">
+        <textarea id="addDesc" rows="4" placeholder="설명"></textarea>
+      </div>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px">
+        <button class="btn" id="saveItem">저장</button>
+        <button id="cancelItem" style="padding:10px 14px;border-radius:10px">취소</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 샘플 데이터 (나중에 CSV/JSON으로 교체 가능)
+    const SAMPLE = {
+      cards: [
+        {id:1,name:'Striking Blow',type:'attack',rarity:'common',desc:'전방 적 하나에 8 피해를 줍니다.'},
+        {id:2,name:'Fortify',type:'power',rarity:'uncommon',desc:'매 턴 방어도를 3 얻습니다.'},
+        {id:3,name:'Quick Step',type:'skill',rarity:'common',desc:'이동 후 카드를 1장 뽑습니다.'}
+      ],
+      relics: [
+        {id:1,name:'Bronze Idol',desc:'전투 시작 시 약간의 금화 획득.'},
+        {id:2,name:'Eternal Feather',desc:'치명타 확률 소폭 증가.'}
+      ],
+      potions: [
+        {id:1,name:'Healing Draught',desc:'사용 시 12 체력을 회복합니다.'},
+        {id:2,name:'Burst Elixir',desc:'한 턴 동안 공격력이 증가합니다.'}
+      ],
+      qa: [
+        {q:'출시일은 언제인가요?', a:'공식 발표를 기다려 주세요. Neowletter와 트레일러를 모아서 링크로 정리할 예정입니다.'},
+        {q:'커뮤니티 가이드는 어디에서 찾나요?', a:'Reddit, Discord, Steam 커뮤니티 허브를 추천합니다.'}
+      ]
+    }
+
+    // 로컬스토리지 키
+    const STORAGE_KEY = 's2_data_v1'
+
+    // 읽기: 로컬에 저장된 데이터가 있으면 사용, 아니면 SAMPLE 사용
+    function loadData(){
+      const raw = localStorage.getItem(STORAGE_KEY)
+      if(raw) try { return JSON.parse(raw) } catch(e) { return SAMPLE }
+      return SAMPLE
+    }
+    let DB = loadData()
+
+    // 렌더 함수들
+    function renderCards(){
+      const grid = document.getElementById('cardsGrid')
+      grid.innerHTML = ''
+      const list = DB.cards
+      if(list.length===0){ grid.innerHTML='<div class="empty">카드가 없습니다.</div>'; return }
+      for(const c of list){
+        const el = document.createElement('div'); el.className='card item';
+        el.innerHTML = `<div class="thumb">${c.name.charAt(0).toUpperCase()}</div>
+          <div class="meta">
+            <h3>${c.name} <span class="muted" style="font-size:12px">· ${c.type} · ${c.rarity}</span></h3>
+            <p>${c.desc}</p>
+          </div>`
+        grid.appendChild(el)
+      }
+    }
+
+    function renderRelics(){
+      const grid = document.getElementById('relicsGrid'); grid.innerHTML=''
+      if(DB.relics.length===0){ grid.innerHTML='<div class="empty">유물이 없습니다.</div>'; return }
+      for(const r of DB.relics){
+        const el = document.createElement('div'); el.className='card item'
+        el.innerHTML = `<div class="thumb">R</div><div class="meta"><h3>${r.name}</h3><p>${r.desc}</p></div>`
+        grid.appendChild(el)
+      }
+    }
+    function renderPotions(){
+      const grid = document.getElementById('potionsGrid'); grid.innerHTML=''
+      if(DB.potions.length===0){ grid.innerHTML='<div class="empty">포션이 없습니다.</div>'; return }
+      for(const p of DB.potions){
+        const el = document.createElement('div'); el.className='card item'
+        el.innerHTML = `<div class="thumb">P</div><div class="meta"><h3>${p.name}</h3><p>${p.desc}</p></div>`
+        grid.appendChild(el)
+      }
+    }
+    function renderQA(){
+      const dl = document.getElementById('qaList'); dl.innerHTML=''
+      if(DB.qa.length===0){ dl.innerHTML='<div class="empty">Q&amp;A 목록이 비어있습니다.</div>'; return }
+      for(const qa of DB.qa){
+        const dt = document.createElement('dt'); dt.textContent = qa.q
+        const dd = document.createElement('dd'); dd.textContent = qa.a
+        dl.appendChild(dt); dl.appendChild(dd)
+      }
+    }
+
+    // 초기 렌더
+    function refreshAll(){ renderCards(); renderRelics(); renderPotions(); renderQA(); }
+    refreshAll()
+
+    // 이벤트
+    // 검색 및 필터 기능은 제거되어 간단화되었습니다.
+    // (필요하면 나중에 다시 추가할 수 있습니다.)
+
+    // 모달 열기/닫기
+    const modal = document.getElementById('modal')
+    document.getElementById('addBtn').addEventListener('click', ()=>{ modal.classList.add('open') })
+    document.getElementById('cancelItem').addEventListener('click', ()=>{ modal.classList.remove('open') })
+
+    // 저장
+    function saveDB(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(DB)); }
+
+    document.getElementById('saveItem').addEventListener('click', ()=>{
+      const cat = document.getElementById('addCategory').value
+      const name = document.getElementById('addName').value.trim()
+      const sub = document.getElementById('addSub').value.trim()
+      const tag = document.getElementById('addTag').value.trim()
+      const desc = document.getElementById('addDesc').value.trim()
+      if(!name){ alert('이름을 입력하세요.'); return }
+      if(cat==='card'){
+        DB.cards.push({id:Date.now(),name, type: sub||'skill', rarity: tag||'common', desc})
+      } else if(cat==='relic'){
+        DB.relics.push({id:Date.now(),name,desc})
+      } else if(cat==='potion'){
+        DB.potions.push({id:Date.now(),name,desc})
+      } else if(cat==='qa'){
+        DB.qa.push({q:name,a:desc})
+      }
+      saveDB(); refreshAll(); modal.classList.remove('open')
+      // 클리어 폼
+      document.getElementById('addName').value=''; document.getElementById('addSub').value=''; document.getElementById('addTag').value=''; document.getElementById('addDesc').value=''
+    })
+
+    // 사이드 네비 링크 스크롤 하이라이트
+    document.querySelectorAll('nav a').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'))
+        a.classList.add('active')
+      })
+    })
+
+    // 유저가 페이지를 떠날 때 자동 저장 (이미 로컬에 반영되지만 안전장치)
+    window.addEventListener('beforeunload', saveDB)
+  </script>
 </body>
 </html>
