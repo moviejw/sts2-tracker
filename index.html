@@ -48,7 +48,8 @@
         }
 
         .sidebar-footer {
-            margin-top: auto; /* 항상 아래 붙게 */
+            margin-top: auto;
+            /* 항상 아래 붙게 */
         }
 
         .github-link img {
@@ -169,23 +170,51 @@
 
             .sidebar {
                 width: 100%;
-                order: 2
+                order: 2;
+                padding: 12px;
             }
 
             .grid {
                 grid-template-columns: 1fr
             }
 
+            .thumb {
+                width: 100%;
+                height: auto;
+            }
+
+            .characters-grid {
+                grid-template-columns: 1fr;
+            }
+
             .main {
-                order: 1
+                order: 1;
+                padding: 12px;
+            }
+
+            .card.item {
+                flex-direction: column; 
+            }
+            .card.item .thumb {
+                width: 100%;
+                height: auto;
             }
         }
 
-        /* 캐릭터 이미지 그리드 */
+        #overview > div {
+            display: flex;
+            flex-wrap: wrap; 
+            gap: 12px;
+        }
+        #overview > div a {
+            flex: 1 1 auto; 
+            min-width: 120px; 
+        }
+
         .characters-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            /* 기본 2열 */
+
             gap: 16px;
         }
 
@@ -203,15 +232,13 @@
             transform: scale(1.03);
         }
 
-        /* 반응형 */
         @media (max-width: 980px) {
             .characters-grid {
                 grid-template-columns: 1fr;
-                /* 모바일 1열 */
+
             }
         }
 
-        /* Item card */
         .item {
             display: flex;
             gap: 14px;
@@ -268,7 +295,7 @@
             justify-content: center;
             text-align: center;
 
-            width: 140px;   
+            width: 140px;
             height: 140px;
             padding: 8px;
         }
@@ -297,8 +324,9 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             gap: 12px;
-            justify-content: start; 
+            justify-content: start;
         }
+
         .muted {
             color: var(--muted);
             font-size: 13px
@@ -334,7 +362,7 @@
             <button class="lang-toggle" id="langBtn" style="margin:12px 0;">원문 보기</button>
             <div class="sidebar-footer">
                 <a href="https://github.com/moviejw/sts2-tracker" target="_blank" class="github-link">
-                <img src="assets/icons/github.png" alt="GitHub">
+                    <img src="assets/icons/github.png" alt="GitHub">
                 </a>
             </div>
         </aside>
