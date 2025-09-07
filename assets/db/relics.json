@@ -1,24 +1,107 @@
 [
     {
-        "name_kr": "광란",
-        "name_en": "Rampage",
-        "type": "Attack",
-        "color": "Ironclad",
-        "cost": 1,
-        "rarity": "Uncommon",
-        "description_kr": "피해를 9 줍니다. 이 카드를 사용할 때마다 이번 전투 동안 이 카드의 피해량이 ? 증가합니다.",
-        "description_en": "Deal 9 damage. Increase this card's damage by ? this combat.",
-        "image": "rampage.png"
+        "name_kr": "준비된 가방",
+        "name_en": "Bag of Preparation",
+        "image": "bag_of_preparation.png"
     },
     {
-        "name_kr": "피에는 피",
-        "name_en": "Blood for Blood",
-        "type": "Attack",
-        "color": "Ironclad",
-        "cost": 4,
-        "rarity": "Uncommon",
-        "description_kr": "이번 전투에서 체력을 잃을 때마다 이 카드의 비용이 1 감소합니다. 피해를 18 줍니다.",
-        "description_en": "Costs 1 less energy for each time you lose HP in combat. Deal 18 damage.",
-        "image": "blood_for_blood.png"
+        "name_kr": "뱀의 반지",
+        "name_en": "Ring of the Snake",
+        "image": "ring_of_the_snake.png"
+    },
+    {
+        "name_kr": "공구함",
+        "name_en": "Toolbox",
+        "image": "toolbox.png"
+    },
+    {
+        "name_kr": "수은 모래시계",
+        "name_en": "Mercury Hourglass",
+        "image": "toolbox.png"
+    },
+    {
+        "name_kr": "웡고의 특가 티켓",
+        "name_en": "Wongo's Bargain Ticket",
+        "image": "ticket.png"
+    },
+    {
+        "name_kr": "???",
+        "name_en": "???",
+        "image": "weapon.png"
+    },
+    {
+        "name_kr": "돌 가습기",
+        "name_en": "Stone Humidifier",
+        "image": "stone_humidifier.png"
+    },
+    {
+        "name_kr": "종이 우상",
+        "name_en": "Joss Paper",
+        "image": "joss_paper.png"
+    },
+    {
+        "name_kr": "용과",
+        "name_en": "Dragon Fruit",
+        "image": "dragon_fruit.png"
+    },
+    {
+        "name_kr": "표창",
+        "name_en": "Shuriken",
+        "image": "shuriken.png"
+    },
+    {
+        "name_kr": "파충류 장신구",
+        "name_en": "Reptile Trinket",
+        "image": "reptile_trinket.png"
+    },
+    {
+        "name_kr": "호화로운 베개",
+        "name_en": "Regal Pillow",
+        "image": "regal_pillow.png"
+    },
+    {
+        "name_kr": "돌리의 거울",
+        "name_en": "Dolly's Mirror",
+        "image": "dollys_mirror.png"
+    },
+    {
+        "name_kr": "???",
+        "name_en": "???",
+        "image": "pants.png"
+    },
+    {
+        "name_kr": "???",
+        "name_en": "???",
+        "image": "monster.png"
+    },
+    {
+        "name_kr": "???",
+        "name_en": "???",
+        "image": "elitemap.png"
+    },
+    {
+        "name_kr": "???",
+        "name_en": "???",
+        "image": "tea.png"
+    },
+    {
+        "name_kr": "불타는 혈액",
+        "name_en": "Burning Blood",
+        "image": "burning_blood.png"
+    },
+    {
+        "name_kr": "스네코의 눈",
+        "name_en": "Snecko Eye",
+        "image": "snecko_eye.png"
+    },
+    {
+        "name_kr": "구슬 주머니",
+        "name_en": "Bag of Marbles",
+        "image": "bag_of_marbles.png"
+    },
+    {
+        "name_kr": "펜 촉",
+        "name_en": "Pen Nib",
+        "image": "pen_nib.png"
     }
 ]

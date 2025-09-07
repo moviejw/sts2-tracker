@@ -42,12 +42,24 @@
             background: linear-gradient(180deg, #ffffff, #fbfdff);
             border-right: 1px solid rgba(15, 23, 42, 0.04);
             height: calc(100vh - 0px);
-            /* 화면 전체 높이 */
             position: sticky;
             top: 0;
-            /* 상단에서 고정 */
             overflow-y: auto;
-            /* 내용이 길어도 스크롤 가능 */
+        }
+
+        .sidebar-footer {
+            margin-top: auto; /* 항상 아래 붙게 */
+        }
+
+        .github-link img {
+            width: 28px;
+            height: 28px;
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
+        }
+
+        .github-link img:hover {
+            opacity: 1;
         }
 
         .brand {
@@ -246,17 +258,47 @@
             font-size: 14px
         }
 
-        /* QnA */
-        .qa dt {
-            font-weight: 600;
-            margin-top: 12px
+        .relic {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            width: 140px;   
+            height: 140px;
+            padding: 8px;
         }
 
-        .qa dd {
-            margin: 6px 0 12px;
-            color: var(--muted)
+        .relic img {
+            width: 96px;
+            height: 96px;
+            border-radius: 10px;
+            object-fit: contain;
+            margin-bottom: 6px;
+            transition: transform 0.1s;
         }
 
+        .relic img:hover {
+            transform: scale(1.12);
+        }
+
+        .relic h3 {
+            font-size: 13px;
+            margin: 0;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+
+        #relicsGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+            justify-content: start; 
+        }
         .muted {
             color: var(--muted);
             font-size: 13px
@@ -279,7 +321,7 @@
                 </div>
                 <div>
                     <div style="font-size:15px">슬더스2</div>
-                    <div class="muted" style="font-size:12px">발매 전 정보</div>
+                    <div class="muted" style="font-size:12px">대체 언제 출시함</div>
                 </div>
             </div>
             <nav>
@@ -288,9 +330,13 @@
                 <a href="#cards">카드</a>
                 <a href="#relics">유물</a>
                 <a href="#release">출시일</a>
-                <a href="#qna">Q & A</a>
             </nav>
             <button class="lang-toggle" id="langBtn" style="margin:12px 0;">원문 보기</button>
+            <div class="sidebar-footer">
+                <a href="https://github.com/moviejw/sts2-tracker" target="_blank" class="github-link">
+                <img src="assets/icons/github.png" alt="GitHub">
+                </a>
+            </div>
         </aside>
 
         <main class="main">
@@ -305,7 +351,7 @@
             <section id="overview" class="card">
                 <h2>슬더스2</h2>
                 <p class="muted" id="overviewText">
-                    슬더스2의 트레일러와 Neowsletter 등의 정보를 정리했습니다. 번역은 대부분 비공식 명칭이며, 모두 개발 중인 내용이므로 출시 시 변경될 수 있습니다. 정보에는 없지만
+                    슬더스2 트레일러와 Neowsletter의 요소들을 정리했습니다. 번역은 대부분 비공식 명칭이며, 모두 개발 중인 내용이므로 출시 시 변경될 수 있습니다. 정보에는 없지만
                     슬더스1에 있는 요소는 그대로 가져왔습니다.
                 </p>
                 <div style="margin-top:12px; display:flex; gap:12px; align-items:center;">
@@ -370,12 +416,6 @@
                         style="text-decoration:none;color:var(--accent); display:flex; align-items:center; gap:6px;">
                         <img src="assets/icons/reddit.png" alt="Reddit" style="width:20px; height:20px;">출시일
                         정보</a></div>
-            </section>
-
-            <!-- QnA -->
-            <section id="qna" class="card">
-                <h2>Q &amp; A</h2>
-                <dl class="qa" id="qaList"></dl>
             </section>
         </main>
     </div>
@@ -449,15 +489,30 @@
         }
 
         function renderRelics(list) {
-            const grid = document.getElementById('relicsGrid'); grid.innerHTML = '';
-            if (list.length === 0) { grid.innerHTML = '<div class="empty">유물이 없습니다.</div>'; return }
-            for (const r of list) {
-                const el = document.createElement('div'); el.className = 'card item';
-                const name = currentLang === 'kr' ? r.name_kr || r.name : r.name_en || r.name;
-                const desc = currentLang === 'kr' ? r.desc_kr || r.desc : r.desc_en || r.desc;
+            const grid = document.getElementById('relicsGrid');
+            grid.innerHTML = '';
+
+            if (list.length === 0) {
+                grid.innerHTML = '<div class="empty">유물이 없습니다.</div>';
+                return;
+            }
+
+            const sorted = [...list].sort((a, b) => {
+                const nameA = a.name_kr || a.name;
+                const nameB = b.name_kr || b.name;
+                return nameA.localeCompare(nameB, 'ko');
+            });
+
+            for (const r of sorted) {
+                const el = document.createElement('div');
+                el.className = 'relic';
+
+                const name = currentLang === 'kr' ? (r.name_kr || r.name) : (r.name_en || r.name);
+
                 el.innerHTML = `
-          <div class="thumb"><img src="assets/relics/${r.image}" alt="${name}"></div>
-          <div class="meta"><h3>${name}</h3><p>${desc}</p></div>`;
+                    <img src="assets/images/relics/${r.image}" alt="${name}">
+                    <h3>${name}</h3>
+                `;
                 grid.appendChild(el);
             }
         }
@@ -516,18 +571,6 @@
             });
         }
 
-
-        function renderQA(list) {
-            const dl = document.getElementById('qaList'); dl.innerHTML = '';
-            if (list.length === 0) { dl.innerHTML = '<div class="empty">Q&amp;A 목록이 비어있습니다.</div>'; return }
-            for (const qa of list) {
-                const q = currentLang === 'kr' ? qa.q_kr || qa.q : qa.q_en || qa.q;
-                const a = currentLang === 'kr' ? qa.a_kr || qa.a : qa.a_en || qa.a;
-                const dt = document.createElement('dt'); dt.textContent = q;
-                const dd = document.createElement('dd'); dd.textContent = a;
-                dl.appendChild(dt); dl.appendChild(dd);
-            }
-        }
 
         function sortCards(cards) {
             const colorOrder = {
@@ -592,9 +635,8 @@
         function renderAll() {
             const sortedCards = sortCards(DB.cards);
             renderCards(sortedCards);
-            //renderRelics(DB.relics);
+            renderRelics(DB.relics);
             renderReleaseDates();
-            //renderQA(DB.qa);
             addImagePopup();
         }
 

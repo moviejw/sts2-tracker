@@ -99,6 +99,17 @@
         "image": "ironclad/taunt.jpeg"
     },
     {
+        "name_kr": "유령 갑옷",
+        "name_en": "Ghostly Armor",
+        "type": "스킬",
+        "color": "아이언클래드",
+        "cost": 1,
+        "rarity": "특별",
+        "description_kr": "휘발성. 방어도를 10 얻습니다.",
+        "description_en": "Ethereal. Gain 10 Block.",
+        "image": "ironclad/ghostly_armor.jpg"
+    },
+    {
         "name_kr": "붙잡기",
         "name_en": "Grapple",
         "type": "스킬",
@@ -195,7 +206,29 @@
         "rarity": "일반",
         "description_kr": "방어도를 8 얻습니다. 카드를 1장 뽑습니다.",
         "description_en": "Gain 8 Block. Draw 1 card.",
-        "image": "ironclad/shrug_it_off.jpeg"
+        "image": "ironclad/shrug_it_off.jpg"
+    },
+    {
+        "name_kr": "절단",
+        "name_en": "Cleave",
+        "type": "공격",
+        "color": "아이언클래드",
+        "cost": 1,
+        "rarity": "일반",
+        "description_kr": "적 전체에게 피해를 8 줍니다.",
+        "description_en": "Deal 8 damage to all enemies.",
+        "image": "ironclad/cleave.jpg"
+    },
+    {
+        "name_kr": "녹아내린 주먹",
+        "name_en": "Molten Fist",
+        "type": "공격",
+        "color": "아이언클래드",
+        "cost": 1,
+        "rarity": "일반",
+        "description_kr": "-",
+        "description_en": "-",
+        "image": "ironclad/molten_fist.jpg"
     },
     {
         "name_kr": "난도질",
