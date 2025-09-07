@@ -283,11 +283,10 @@
                 </div>
             </div>
             <nav>
-                <a href="#overview" class="active">개요</a>
+                <a href="#overview" class="active">슬더스2</a>
                 <a href="#characters">캐릭터</a>
                 <a href="#cards">카드</a>
                 <a href="#relics">유물</a>
-                <a href="#potions">포션</a>
                 <a href="#release">출시일</a>
                 <a href="#qna">Q & A</a>
             </nav>
@@ -304,7 +303,7 @@
 
             <!-- Overview -->
             <section id="overview" class="card">
-                <h2>개요</h2>
+                <h2>슬더스2</h2>
                 <p class="muted" id="overviewText">
                     슬더스2의 트레일러와 Neowsletter 등의 정보를 정리했습니다. 번역은 대부분 비공식 명칭이며, 모두 개발 중인 내용이므로 출시 시 변경될 수 있습니다. 정보에는 없지만
                     슬더스1에 있는 요소는 그대로 가져왔습니다.
@@ -362,12 +361,6 @@
                 <div id="relicsGrid" class="grid"></div>
             </section>
 
-            <!-- Potions -->
-            <section id="potions" class="card">
-                <h2>포션</h2>
-                <div id="potionsGrid" class="grid"></div>
-            </section>
-
             <section id="release" class="card">
                 <h2>출시일</h2>
                 <div id="highlightRelease" style="margin-top:12px;"></div>
@@ -395,7 +388,7 @@
 
     <script>
         let currentLang = 'kr';
-        let DB = { cards: [], relics: [], potions: [], qa: [] };
+        let DB = { cards: [], relics: [], qa: [] };
 
         async function loadJSON(path) {
             const res = await fetch(path);
@@ -405,15 +398,13 @@
 
         async function loadAllData() {
             try {
-                const [cards, relics, potions, qa] = await Promise.all([
+                const [cards, relics, qa] = await Promise.all([
                     loadJSON("assets/db/cards.json"),
                     loadJSON("assets/db/relics.json"),
-                    loadJSON("assets/db/potions.json"),
                     loadJSON("assets/db/qnas.json")
                 ]);
                 DB.cards = cards;
                 DB.relics = relics;
-                DB.potions = potions;
                 DB.qa = qa;
                 renderAll();
             } catch (e) {
@@ -439,7 +430,7 @@
                     case '아이언클래드': bgColor = 'var(--card-color-red)'; break;
                     case '사일런트': bgColor = 'var(--card-color-green)'; break;
                     case '디펙트': bgColor = 'var(--card-color-blue)'; break;
-                    case '와쳐': bgColor = 'var(--card-color-purple)'; break;
+                    case '네크로바인더': bgColor = 'var(--card-color-purple)'; break;
                     default: bgColor = 'var(--card-color-gray)';
                 }
                 el.style.background = bgColor;
@@ -466,20 +457,6 @@
                 const desc = currentLang === 'kr' ? r.desc_kr || r.desc : r.desc_en || r.desc;
                 el.innerHTML = `
           <div class="thumb"><img src="assets/relics/${r.image}" alt="${name}"></div>
-          <div class="meta"><h3>${name}</h3><p>${desc}</p></div>`;
-                grid.appendChild(el);
-            }
-        }
-
-        function renderPotions(list) {
-            const grid = document.getElementById('potionsGrid'); grid.innerHTML = '';
-            if (list.length === 0) { grid.innerHTML = '<div class="empty">포션이 없습니다.</div>'; return }
-            for (const p of list) {
-                const el = document.createElement('div'); el.className = 'card item';
-                const name = currentLang === 'kr' ? p.name_kr || p.name : p.name_en || p.name;
-                const desc = currentLang === 'kr' ? p.desc_kr || p.desc : p.desc_en || p.desc;
-                el.innerHTML = `
-          <div class="thumb"><img src="assets/potions/${p.image}" alt="${name}"></div>
           <div class="meta"><h3>${name}</h3><p>${desc}</p></div>`;
                 grid.appendChild(el);
             }
@@ -552,6 +529,45 @@
             }
         }
 
+        function sortCards(cards) {
+            const colorOrder = {
+                '아이언클래드': 0,
+                '사일런트': 1,
+                '네크로바인더': 2,
+                '디펙트': 3,
+                '무색': 4
+            };
+
+            const typeOrder = {
+                '공격': 0,
+                '스킬': 1,
+                '파워': 2
+            };
+
+            const rarityOrder = {
+                '시작': 0,
+                '일반': 1,
+                '특별': 2,
+                '희귀': 3
+            };
+
+            return cards.slice().sort((a, b) => {
+                const colorA = colorOrder[a.color] ?? 99;
+                const colorB = colorOrder[b.color] ?? 99;
+                if (colorA !== colorB) return colorA - colorB;
+
+                const typeA = typeOrder[a.type] ?? 99;
+                const typeB = typeOrder[b.type] ?? 99;
+                if (typeA !== typeB) return typeA - typeB;
+
+                const rarityA = rarityOrder[a.rarity] ?? 99;
+                const rarityB = rarityOrder[b.rarity] ?? 99;
+                if (rarityA !== rarityB) return rarityA - rarityB;
+
+                return 0;
+            });
+        }
+
         const modal = document.getElementById('imageModal');
         const modalImg = document.getElementById('modalImg');
 
@@ -574,9 +590,9 @@
         });
 
         function renderAll() {
-            renderCards(DB.cards);
+            const sortedCards = sortCards(DB.cards);
+            renderCards(sortedCards);
             //renderRelics(DB.relics);
-            //renderPotions(DB.potions);
             renderReleaseDates();
             //renderQA(DB.qa);
             addImagePopup();
