@@ -545,9 +545,20 @@
         "color": "네크로바인더",
         "cost": 1,
         "rarity": "일반",
-        "description_kr": "피해를 7 줍니다. 막히지 않은 피해만큼 파멸을 부여합니다.",
-        "description_en": "Deal 7 damage. Apply Doom equal to unblocked damage dealt.",
-        "image": "necrobinder/blight_strike.jpeg"
+        "description_kr": "피해를 8 줍니다. 막히지 않은 피해만큼 종말을 부여합니다.",
+        "description_en": "Deal 8 damage. Apply Doom equal to unblocked damage dealt.",
+        "image": "necrobinder/blight_strike.png"
+    },
+    {
+        "name_kr": "보디가드",
+        "name_en": "Bodyguard",
+        "type": "공격",
+        "color": "네크로바인더",
+        "cost": 2,
+        "rarity": "일반",
+        "description_kr": "5만큼 소환합니다. 골골이가 피해를 10 줍니다.",
+        "description_en": "Summon 5. Osty deals 10 damage.",
+        "image": "necrobinder/bodyguard.png"
     },
     {
         "name_kr": "조각된 유령",
@@ -559,6 +570,39 @@
         "description_kr": "피해를 11 줍니다. 영혼을 2장 얻습니다.",
         "description_en": "Deal 11 damage. Add 2 Soul into your hand.",
         "image": "necrobinder/carve_ghost.jpeg"
+    },
+    {
+        "name_kr": "뼈 파편",
+        "name_en": "Bone Shards",
+        "type": "공격",
+        "color": "네크로바인더",
+        "cost": 1,
+        "rarity": "특별",
+        "description_kr": "골골이가 살아있다면 적 전체에게 골골이가 피해를 9 주고 자신이 방어도를 9 얻습니다. 골골이가 죽습니다.",
+        "description_en": "If Osty is alive, he deals 9 damage to ALL enemies and you gain 9 Block. Osty dies.",
+        "image": "necrobinder/bone_shards.png"
+    },
+    {
+        "name_kr": "도망칠 곳은 없다",
+        "name_en": "No Escape",
+        "type": "스킬",
+        "color": "네크로바인더",
+        "cost": 1,
+        "rarity": "특별",
+        "description_kr": "-",
+        "description_en": "-",
+        "image": "necrobinder/no_escape.png"
+    },
+    {
+        "name_kr": "찌르기",
+        "name_en": "Poke",
+        "type": "공격",
+        "color": "네크로바인더",
+        "cost": 0,
+        "rarity": "일반",
+        "description_kr": "골골이가 피해를 6 줍니다.",
+        "description_en": "Osty deals 6 damage.",
+        "image": "necrobinder/poke.png"
     },
     {
         "name_kr": "정화",
@@ -591,7 +635,7 @@
         "rarity": "시작",
         "description_kr": "피해를 6 줍니다.",
         "description_en": "Deal 6 damage.",
-        "image": "necrobinder/strike.jpeg"
+        "image": "necrobinder/strike.png"
     },
     {
         "name_kr": "수비",
@@ -622,9 +666,31 @@
         "color": "네크로바인더",
         "cost": 0,
         "rarity": "특별",
-        "description_kr": "이번 턴에 파멸을 부여할 때마다 방어도를 4 얻습니다.",
+        "description_kr": "이번 턴에 종말을 부여할 때마다 방어도를 4 얻습니다.",
         "description_en": "Whenever you apply Doom this turn, gain 4 Block.",
         "image": "necrobinder/fearmonger.jpeg"
+    },
+    {
+        "name_kr": "죽음을 부르는 자",
+        "name_en": "Deathbringer",
+        "type": "스킬",
+        "color": "네크로바인더",
+        "cost": 2,
+        "rarity": "일반",
+        "description_kr": "적 전체에게 종말을 21 부여합니다.",
+        "description_en": "Apply 21 Doom to ALL enemies.",
+        "image": "necrobinder/deathbringer.png"
+    },
+    {
+        "name_kr": "오른손손",
+        "name_en": "Right Hand Hand",
+        "type": "공격",
+        "color": "네크로바인더",
+        "cost": 0,
+        "rarity": "특별",
+        "description_kr": "-",
+        "description_en": "-",
+        "image": "necrobinder/right_hand_hand.png"
     },
     {
         "name_kr": "우정",
@@ -638,15 +704,26 @@
         "image": "necrobinder/friendship.jpeg"
     },
     {
+        "name_kr": "신경 급류",
+        "name_en": "Neurosurge",
+        "type": "파워",
+        "color": "네크로바인더",
+        "cost": 0,
+        "rarity": "희귀",
+        "description_kr": "에너지를 3 얻습니다. 카드를 2장 뽑습니다. 내 턴 시작 시 자신에게 종말을 3 부여합니다.",
+        "description_en": "Gain 3 energy. Draw 2 cards. At the start of your turn, apply 3 Doom to yourself.",
+        "image": "necrobinder/neurosurge.png"
+    },
+    {
         "name_kr": "무덤 감시자",
         "name_en": "Grave Warden",
         "type": "스킬",
         "color": "네크로바인더",
         "cost": 1,
         "rarity": "일반",
-        "description_kr": "방어도를 6 얻습니다. 영혼을 1장 얻습니다.",
-        "description_en": "Gain 6 Block. Add 1 Soul into your hand.",
-        "image": "necrobinder/grave_warden.jpeg"
+        "description_kr": "방어도를 8 얻습니다. 영혼을 1장 뽑을 카드 더미에 섞어 넣습니다.",
+        "description_en": "Gain 8 Block. Add 1 Soul into your Draw Pile.",
+        "image": "necrobinder/grave_warden.png"
     },
     {
         "name_kr": "네거티브 펄스",
@@ -655,7 +732,7 @@
         "color": "네크로바인더",
         "cost": 1,
         "rarity": "일반",
-        "description_kr": "방어도를 7 얻습니다. 적 전체에게 파멸을 4 부여합니다.",
+        "description_kr": "방어도를 7 얻습니다. 적 전체에게 종말을 4 부여합니다.",
         "description_en": "Gain 7 Block. Apply 4 Doom to all enemies.",
         "image": "necrobinder/negative_pulse.jpeg"
     },
@@ -666,7 +743,7 @@
         "color": "네크로바인더",
         "cost": 1,
         "rarity": "희귀",
-        "description_kr": "적의 파멸을 2배로 만듭니다. 소멸.",
+        "description_kr": "적의 종말을 2배로 만듭니다. 소멸.",
         "description_en": "Double the enemy's Doom. Exhaust.",
         "image": "necrobinder/oblivion.jpeg"
     },
@@ -677,8 +754,8 @@
         "color": "네크로바인더",
         "cost": 1,
         "rarity": "특별",
-        "description_kr": "오트시가 공격할 때마다 그 적에게 파멸을 5 부여합니다.",
-        "description_en": "Whenever Otsy attacks, apply 5 Doom to the enemy.",
+        "description_kr": "골골이가 공격할 때마다 그 적에게 종말을 5 부여합니다.",
+        "description_en": "Whenever Osty attacks, apply 5 Doom to the enemy.",
         "image": "necrobinder/plague_carrier.jpeg"
     },
     {
@@ -710,7 +787,7 @@
         "color": "네크로바인더",
         "cost": 1,
         "rarity": "일반",
-        "description_kr": "파멸을 17 부여합니다.",
+        "description_kr": "종말을 17 부여합니다.",
         "description_en": "Apply 17 Doom.",
         "image": "necrobinder/scourge.jpeg"
     },
@@ -721,7 +798,7 @@
         "color": "네크로바인더",
         "cost": 1,
         "rarity": "일반",
-        "description_kr": "적 전체에게 피해를 5 줍니다. 그들이 파멸을 가지고 있다면, 추가로 피해를 5 줍니다.",
+        "description_kr": "적 전체에게 피해를 5 줍니다. 그들이 종말을 가지고 있다면, 추가로 피해를 5 줍니다.",
         "description_en": "Deal 5 damage to all enemies. If they have Doom, deal another 5 damage.",
         "image": "necrobinder/swipe.jpeg"
     },
@@ -754,9 +831,31 @@
         "color": "네크로바인더",
         "cost": 1,
         "rarity": "특별",
-        "description_kr": "적이 가진 파멸만큼 피해를 줍니다. 소멸.",
+        "description_kr": "적이 가진 종말만큼 피해를 줍니다. 소멸.",
         "description_en": "Deal damage equal to the enemy's Doom. Exhaust.",
         "image": "necrobinder/times_up.jpeg"
+    },
+    {
+        "name_kr": "조각 타격",
+        "name_en": "Sculping Strike",
+        "type": "공격",
+        "color": "네크로바인더",
+        "cost": 1,
+        "rarity": "일반",
+        "description_kr": "피해를 8 줍니다. 손에 있는 카드 1장에 휘발성을 부여합니다.",
+        "description_en": "Deal 8 damage. Add Ethereal to a card in your Hand.",
+        "image": "necrobinder/sculping_strike.png"
+    },
+    {
+        "name_kr": "변모",
+        "name_en": "Transfigure",
+        "type": "스킬",
+        "color": "네크로바인더",
+        "cost": 1,
+        "rarity": "희귀",
+        "description_kr": "손에 있는 카드 1장에 재사용을 부여합니다. 그 카드는 비용이 1 증가합니다. 소멸.",
+        "description_en": "Add Replay to card in your Hand. It costs an extra energy. Exhaust.",
+        "image": "necrobinder/transfigure.png"
     },
     {
         "name_kr": "자동인형",
@@ -812,6 +911,17 @@
         "description_kr": "방어도를 30 얻습니다. 다음 2턴 동안 카드를 통해 방어도를 얻을 수 없습니다. 소멸.",
         "description_en": "Gain 30 Block. You cannot gain Block from cards for 2 turns. Exhaust.",
         "image": "colorless/panic_button.jpeg"
+    },
+    {
+        "name_kr": "영혼",
+        "name_en": "Soul",
+        "type": "스킬",
+        "color": "무색",
+        "cost": 0,
+        "rarity": "이벤트",
+        "description_kr": "카드를 2 장 뽑습니다. 소멸.",
+        "description_en": "Draw 2 cards. Exhaust.",
+        "image": "colorless/soul.png"
     },
     {
         "name_kr": "생산",
